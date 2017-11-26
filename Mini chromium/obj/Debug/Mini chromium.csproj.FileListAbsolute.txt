@@ -1,0 +1,16 @@
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\bin\Debug\WindowsFormsApp1.exe
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\bin\Debug\ChromiumFX.dll
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\bin\Debug\ChromiumWebBrowser.dll
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\bin\Debug\ChromiumFX.pdb
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\bin\Debug\ChromiumFX.xml
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\bin\Debug\ChromiumWebBrowser.pdb
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\bin\Debug\ChromiumWebBrowser.xml
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\obj\Debug\Mini chromium.csprojResolveAssemblyReference.cache
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\obj\Debug\Mini chromium.csproj.GenerateResource.Cache
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\obj\Debug\Mini chromium.csproj.CoreCompileInputs.cache
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\obj\Debug\WindowsFormsApp1.exe
+C:\Users\a1499\source\repos\Mini chromium\Mini chromium\obj\Debug\WindowsFormsApp1.pdb

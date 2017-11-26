@@ -1,0 +1,837 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ChromiumWebBrowser</name>
+    </assembly>
+    <members>
+        <member name="P:Chromium.WebBrowser.FindToolbar.Visible">
+            <summary>
+            Get or set a value indicating whether the find toolbar is displayed.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.FindToolbar.CloseButtonVisible">
+            <summary>
+            Get or set a value indicating whether the close button is displayed.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.FindToolbar.MatchCase">
+            <summary>
+            Get or set the state of the match case button.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.FindToolbar.Search(System.String)">
+            <summary>
+            Sets the text in the find box and performs a search.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.FindToolbar.FindText">
+            <summary>
+            The text in the find box.
+            Setting the text clears any previous search results currently displayed.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.FindToolbar.FocusFindText">
+            <summary>
+            Sets input focus to the find box.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Chromium.WebBrowser.FindToolbar.FindTextSelectionStart">
+            <summary>
+            Gets or sets the starting point of text selected in the find box.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.FindToolbar.FindTextSelectionLength">
+            <summary>
+            Gets or sets the number of characters selected in the find box.
+            </summary>
+        </member>
+        <member name="T:Chromium.WebBrowser.JSDynamicProperty">
+            <summary>
+            Represents a dynamic javascript property in the render process 
+            to be added to a JSObject.
+            </summary>
+        </member>
+        <member name="E:Chromium.WebBrowser.JSDynamicProperty.PropertyGet">
+            <summary>
+            Called if a script attempts to get the value of
+            this dynamic property. It's up to the
+            application to decide how to handle the request. See also
+            description of CfrV8AccessorGetEventArgs.
+            If the application does not subscribe to this event, the 
+            default action will be to return «undefined».
+            </summary>
+        </member>
+        <member name="E:Chromium.WebBrowser.JSDynamicProperty.PropertySet">
+            <summary>
+            Called if a script attempts to set the value of
+            this dynamic property. It's up to the 
+            application to decide how to handle the request. See also
+            description of CfrV8AccessorSetEventArgs.
+            If the application does not subscribe to this event, the 
+            default action will be to silently ignore the request.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSDynamicProperty.#ctor">
+            <summary>
+            Creates a new dynamic javascript property to be added to a JSObject.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSDynamicProperty.#ctor(Chromium.WebBrowser.JSInvokeMode)">
+            <summary>
+            Creates a new dynamic javascript property to be added to a JSObject.
+            </summary>
+        </member>
+        <member name="T:Chromium.WebBrowser.JSFunction">
+            <summary>
+            Represents a javascript function in the render process to be added as 
+            a property to a browser frame's global object or to a JSObject.
+            </summary>
+        </member>
+        <member name="E:Chromium.WebBrowser.JSFunction.Execute">
+            <summary>
+            Javascript callback event for this function.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSFunction.#ctor">
+            <summary>
+            Creates a new javascript function to be added as a property 
+            to a browser frame's global object or to a child object.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSFunction.#ctor(Chromium.WebBrowser.JSInvokeMode)">
+            <summary>
+            Creates a new javascript function to be added as a property 
+            to a browser frame's global object or to a child object.
+            </summary>
+        </member>
+        <member name="T:Chromium.WebBrowser.ChromiumWebBrowser">
+            <summary>
+            Windows Forms webbrowser control based on ChromiumFX.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.DefaultBrowserSettings">
+            <summary>
+            The CfxBrowserSettings applied for new instances of ChromiumWebBrowser.
+            Any changes to these settings will only apply to new browsers,
+            leaving already created browsers unaffected.
+            </summary>
+        </member>
+        <member name="E:Chromium.WebBrowser.ChromiumWebBrowser.OnBeforeCfxInitialize">
+            <summary>
+            Provides an opportunity to change initialization settings
+            and subscribe to browser process handler events.
+            </summary>
+        </member>
+        <member name="E:Chromium.WebBrowser.ChromiumWebBrowser.OnBeforeCommandLineProcessing">
+            <summary>
+            Provides an opportunity to view and/or modify command-line arguments before
+            processing by CEF and Chromium. The |ProcessType| value will be NULL for
+            the browser process. Do not keep a reference to the CfxCommandLine
+            object passed to this function. The CfxSettings.CommandLineArgsDisabled
+            value can be used to start with an NULL command-line object. Any values
+            specified in CfxSettings that equate to command-line arguments will be set
+            before this function is called. Be cautious when using this function to
+            modify command-line arguments for non-browser processes as this may result
+            in undefined behavior including crashes.
+            </summary>
+        </member>
+        <member name="E:Chromium.WebBrowser.ChromiumWebBrowser.OnRegisterCustomSchemes">
+            <summary>
+            Provides an opportunity to register custom schemes. Do not keep a reference
+            to the |Registrar| object. This function is called on the main thread for
+            each process and the registered schemes should be the same across all
+            processes.
+            </summary>
+        </member>
+        <member name="E:Chromium.WebBrowser.ChromiumWebBrowser.RemoteProcessCreated">
+            <summary>
+            For each new render process created, provides an opportunity to subscribe
+            to CfrRenderProcessHandler remote callback events.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.Initialize">
+            <summary>
+            Initialize the ChromiumWebBrowser and ChromiumFX libraries.
+            The application can change initialization settings by handling
+            the OnBeforeCfxInitialize event.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.Shutdown">
+            <summary>
+            This function should be called on the main application thread to shut down
+            the CEF browser process before the application exits.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.BrowserProcessHandler">
+            <summary>
+            The CfxBrowserProcessHandler for this browser process.
+            Do not access this property before calling ChromiumWebBrowser.Initialize()
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.FromCfxBrowser(Chromium.CfxBrowser)">
+            <summary>
+            Returns the ChromiumWebBrowser object associated with  the given CfxBrowser, or null
+            if the CfxBrowser is not associated with any ChromiumWebBrowser object.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.Browser">
+            <summary>
+            Returns the CfxBrowser object for this ChromiumWebBrowser.
+            Might be null if the browser has not yet been created.
+            Wait for the BrowserCreated event before accessing this property.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.BrowserHost">
+            <summary>
+            Returns the CfxBrowserHost object for this ChromiumWebBrowser.
+            Might be null if the browser has not yet been created.
+            Wait for the BrowserCreated event before accessing this property.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.RemoteCallbackInvokeMode">
+            <summary>
+            The invoke mode for this browser. See also JSInvokeMode.
+            Changes to the invoke mode will be effective after the next
+            time the browser creates a V8 context. If this is set to
+            "Inherit", then "Invoke" will be assumed. The invoke mode
+            also applies to VisitDom and EvaluateJavascript.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.RemoteCallbacksWillInvoke">
+            <summary>
+            Indicates whether render process callbacks on this browser
+            will be executed on the thread that owns the 
+            browser's underlying window handle.
+            Depends on the invoke mode. If the invoke mode is set to
+            "Inherit", then "Invoke" will be assumed.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.#ctor">
+            <summary>
+            Creates a ChromiumWebBrowser object with about:blank as initial URL.
+            The underlying CfxBrowser is created immediately with the
+            default CfxRequestContext.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.#ctor(System.Boolean)">
+            <summary>
+            Creates a ChromiumWebBrowser object with about:blank as initial URL.
+            If createImmediately is true, then the underlying CfxBrowser is 
+            created immediately with the default CfxRequestContext.
+            </summary>
+            <param name="createImmediately"></param>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.#ctor(System.String)">
+            <summary>
+            Creates a ChromiumWebBrowser object with the given initial URL.
+            The underlying CfxBrowser is created immediately with the
+            default CfxRequestContext.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.#ctor(System.String,System.Boolean)">
+            <summary>
+            Creates a ChromiumWebBrowser object with the given initial URL.
+            If createImmediately is true, then the underlying CfxBrowser is 
+            created immediately with the default CfxRequestContext.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.CreateBrowser">
+            <summary>
+            Creates the underlying CfxBrowser with the default CfxRequestContext.
+            This method should only be called if this ChromiumWebBrowser
+            was instanciated with createImmediately == false.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.CreateBrowser(System.String)">
+            <summary>
+            Creates the underlying CfxBrowser with the default CfxRequestContext
+            and the given initial URL.
+            This method should only be called if this ChromiumWebBrowser
+            was instanciated with createImmediately == false.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.CreateBrowser(System.String,Chromium.CfxRequestContext)">
+            <summary>
+            Creates the underlying CfxBrowser with the given 
+            CfxRequestContext and initial URL.
+            This method should only be called if this ChromiumWebBrowser
+            was instanciated with createImmediately == false.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.CreateBrowser(Chromium.CfxRequestContext)">
+            <summary>
+            Creates the underlying CfxBrowser with the given CfxRequestContext.
+            This method should only be called if this ChromiumWebBrowser
+            was instanciated with createImmediately == false.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.ContextMenuHandler">
+            <summary>
+            Returns the context menu handler for this browser. If this is never accessed the default
+            implementation will be used.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.LifeSpanHandler">
+            <summary>
+            Returns the life span handler for this browser.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.LoadHandler">
+            <summary>
+            Returns the load handler for this browser.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.RequestHandler">
+            <summary>
+            Returns the request handler for this browser.
+            Do not set the return value in the GetResourceHandler event for URLs
+            with associated WebResources (see also SetWebResource).
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.DisplayHandler">
+            <summary>
+            Returns the display handler for this browser.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.DownloadHandler">
+            <summary>
+            Returns the download handler for this browser. If this is never accessed
+            downloads will not be allowed.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.DragHandler">
+            <summary>
+            Returns the drag handler for this browser.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.DialogHandler">
+            <summary>
+            Returns the dialog handler for this browser. If this is never accessed the default
+            implementation will be used.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.FindHandler">
+            <summary>
+            Returns the find handler for this browser.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.FocusHandler">
+            <summary>
+            Returns the focus handler for this browser.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.GeolocationHandler">
+            <summary>
+            Returns the geolocation handler for this browser. If this is never accessed
+            geolocation access will be denied by default.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.JsDialogHandler">
+            <summary>
+            Returns the js dialog handler for this browser. If this is never accessed the default
+            implementation will be used.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.KeyboardHandler">
+            <summary>
+            Returns the keyboard handler for this browser.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.Url">
+            <summary>
+            Returns the URL currently loaded in the main frame.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.IsLoading">
+            <summary>
+            Returns true if the browser is currently loading.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.CanGoBack">
+            <summary>
+            Returns true if the browser can navigate backwards.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.CanGoForward">
+            <summary>
+            Returns true if the browser can navigate forwards.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.GoBack">
+            <summary>
+            Navigate backwards.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.GoForward">
+            <summary>
+            Navigate forwards.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.LoadUrl(System.String)">
+            <summary>
+            Load the specified |url| into the main frame.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.LoadString(System.String,System.String)">
+            <summary>
+            Load the contents of |stringVal| with the specified dummy |url|. |url|
+            should have a standard scheme (for example, http scheme) or behaviors like
+            link clicks and web security restrictions may not behave as expected.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.LoadString(System.String)">
+            <summary>
+            Load the contents of |stringVal| with dummy url about:blank.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.Find(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Search for |searchText|. |forward| indicates whether to search forward or
+            backward within the page. |matchCase| indicates whether the search should
+            be case-sensitive.
+            Returns the identifier for this find operation (see also CfxFindHandler),
+            or -1 if the browser has not yet been created.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.Find(System.String,System.Boolean)">
+            <summary>
+            Search for |searchText|. |forward| indicates whether to search forward or
+            backward within the page. The search will be case-insensitive.
+            Returns the identifier for this find operation (see also CfxFindHandler),
+            or -1 if the browser has not yet been created.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.Find(System.String)">
+            <summary>
+            Search for |searchText|. The search will be forward and case-insensitive.
+            Returns the identifier for this find operation (see also CfxFindHandler),
+            or -1 if the browser has not yet been created.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.FindToolbar">
+            <summary>
+            Get the find toolbar of this browser window.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.ExecuteJavascript(System.String)">
+            <summary>
+            Execute a string of javascript code in the browser's main frame.
+            Execution is asynchronous, this function returns immediately.
+            Returns false if the browser has not yet been created.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.ExecuteJavascript(System.String,System.String,System.Int32)">
+            <summary>
+            Execute a string of javascript code in the browser's main frame. The |scriptUrl|
+            parameter is the URL where the script in question can be found, if any. The
+            renderer may request this URL to show the developer the source of the
+            error.  The |startLine| parameter is the base line number to use for error
+            reporting.
+            Execution is asynchronous, this function returns immediately.
+            Returns false if the browser has not yet been created.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.RenderThreadInvoke(System.Delegate,System.Object[])">
+            <summary>
+            Special Invoke for framework callbacks from the render process.
+            Maintains the thread in the context of the calling remote thread.
+            Use this instead of invoke when the following conditions are meat:
+            1) The current thread is executing in the scope of a framework
+               callback event from the render process (ex. CfrTask.Execute).
+            2) You need to Invoke on the webbrowser control and
+            3) The invoked code needs to call into the render process.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.RenderThreadInvoke(System.Windows.Forms.MethodInvoker)">
+            <summary>
+            Special Invoke for framework callbacks from the render process.
+            Maintains the thread within the context of the calling remote thread.
+            Use this instead of invoke when the following conditions are meat:
+            1) The current thread is executing in the scope of a framework
+               callback event from the render process (ex. CfrTask.Execute).
+            2) You need to Invoke on the webbrowser control and
+            3) The invoked code needs to call into the render process.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.EvaluateJavascript(System.String,System.Action{Chromium.Remote.CfrV8Value,Chromium.Remote.CfrV8Exception})">
+            <summary>
+            Evaluate a string of javascript code in the browser's main frame.
+            Evaluation is done asynchronously in the render process.
+            Returns false if the remote browser is currently unavailable.
+            If this function returns false, then |callback| will not be called. Otherwise,
+            |callback| will be called asynchronously in the context of the render thread and,
+            if RemoteCallbackInvokeMode is set to Invoke, on the thread that owns the 
+            browser's underlying window handle.
+            
+            Use with care:
+            The callback may never be called if the render process gets killed prematurely.
+            On success the CfrV8Value argument of the callback will be set to the return value
+            of the evaluated script, if any. On failure the CfrV8Exception argument of the callback
+            will be set to the exception thrown by the evaluated script, if any.
+            Do not block the callback since it blocks the render thread.
+            
+            *** WARNING ***
+            In CEF 3.2623 and higher, the return value of the evaluation 
+            seems to be broken in some cases (see also issue #65).
+            
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.EvaluateJavascript(System.String,Chromium.WebBrowser.JSInvokeMode,System.Action{Chromium.Remote.CfrV8Value,Chromium.Remote.CfrV8Exception})">
+            <summary>
+            Evaluate a string of javascript code in the browser's main frame.
+            Evaluation is done asynchronously in the render process.
+            Returns false if the remote browser is currently unavailable.
+            If this function returns false, then |callback| will not be called. Otherwise,
+            |callback| will be called asynchronously in the context of the render thread.
+            
+            If |invokeMode| is set to Invoke, |callback| will be called on the thread that 
+            owns the browser's underlying window handle. If |invokeMode| is set to Inherit,
+            |callback| will be called according to RemoteCallbackInvokeMode.
+            
+            Use with care:
+            The callback may never be called if the render process gets killed prematurely.
+            On success the CfrV8Value argument of the callback will be set to the return value
+            of the evaluated script, if any. On failure the CfrV8Exception argument of the callback
+            will be set to the exception thrown by the evaluated script, if any.
+            Do not block the callback since it blocks the render thread.
+            
+            *** WARNING ***
+            In CEF 3.2623 and higher, the return value of the evaluation 
+            seems to be broken in some cases (see also issue #65).
+            
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.ChromiumWebBrowser.GlobalObject">
+            <summary>
+            Represents the main frame's global javascript object (window).
+            Any changes to the global object's properties will be available 
+            after the next time a V8 context is created in the render process
+            for the main frame of this browser.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.GlobalObjectForFrame(System.String)">
+            <summary>
+            Represents a named frame's global javascript object (window).
+            Any changes to the global object's properties will be available 
+            after the next time a V8 context is created in the render process
+            of this browser for a frame with this name.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.VisitDom(System.Action{Chromium.Remote.CfrDomDocument,Chromium.Remote.CfrBrowser})">
+            <summary>
+            Visit the DOM in the remote browser's main frame.
+            Returns false if the remote browser is currently unavailable.
+            If this function returns false, then |callback| will not be called. Otherwise,
+            |callback| will be called according to the InvokeMode setting.
+            
+            The document object passed to the callback represents a snapshot 
+            of the DOM at the time the callback is executed.
+            DOM objects are only valid for the scope of the callback. Do not
+            keep references to or attempt to access any DOM objects outside the scope
+            of the callback.
+            Use with care:
+            The callback may never be called if the render process gets killed prematurely.
+            Do not keep a reference to the remote DOM or remote browser object after returning from the callback.
+            Do not block the callback since it blocks the renderer thread.
+            Explicitly Dispose() all CfrDomNode objects, otherwise the render process may become unstable and crash.
+            </summary>
+            <param name="callback"></param>
+            <returns></returns>
+        </member>
+        <member name="E:Chromium.WebBrowser.ChromiumWebBrowser.OnV8ContextCreated">
+            <summary>
+            Called immediately after the V8 context for a frame has been created. To
+            retrieve the JavaScript 'window' object use the
+            CfrV8Context.GetGlobal() function. V8 handles can only be accessed
+            from the thread on which they are created. A task runner for posting tasks
+            on the associated thread can be retrieved via the
+            CfrV8Context.GetTaskRunner() function.
+            
+            All javascript properties/functions defined through GlobalObject or GlobalObjectForFrame
+            are made available before this event is executed.
+            
+            If RemoteCallbackInvokeMode is set to Invoke, then this event is executed on the 
+            thread that owns the browser's underlying window handle.
+            </summary>
+            <remarks>
+            See also the original CEF documentation in
+            <see href="https://bitbucket.org/chromiumfx/chromiumfx/src/tip/cef/include/capi/cef_render_process_handler_capi.h">cef/include/capi/cef_render_process_handler_capi.h</see>.
+            </remarks>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.SetWebResource(System.String,Chromium.WebBrowser.WebResource)">
+            <summary>
+            Set a resource to be used for the specified URL.
+            Note that these resources are kept in the memory.
+            If you need to handle a lot of custom web resources,
+            subscribing to RequestHandler.GetResourceHandler
+            and loading from disk on demand
+            might be a better choice.
+            </summary>
+            <param name="url"></param>
+            <param name="resource"></param>
+        </member>
+        <member name="M:Chromium.WebBrowser.ChromiumWebBrowser.RemoveWebResource(System.String)">
+            <summary>
+            Remove a resource previously set for the specified URL.
+            </summary>
+            <param name="url"></param>
+        </member>
+        <member name="E:Chromium.WebBrowser.ChromiumWebBrowser.BrowserCreated">
+            <summary>
+            Raised after the CfxBrowser object for this WebBrowser has been created.
+            The event is executed on the thread that owns this browser control's 
+            underlying window handle.
+            </summary>
+        </member>
+        <member name="E:Chromium.WebBrowser.ChromiumWebBrowser.RemoteBrowserCreated">
+            <summary>
+            Called after a remote browser has been created. When browsing cross-origin a new
+            browser will be created before the old browser is destroyed.
+            
+            Applications may keep a reference to the CfrBrowser object outside the scope 
+            of this event, but you have to be aware that those objects become invalid as soon
+            as the framework swaps render processes and/or recreates browsers.
+            </summary>
+        </member>
+        <member name="T:Chromium.WebBrowser.JSObject">
+            <summary>
+            Represents a javascript object in the render process to be added as 
+            a property to a browser frame's global object or to another JSObject.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.#ctor">
+            <summary>
+            Creates a new javascript object to be added as a property 
+            to a browser frame's global object or a child object.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.#ctor(Chromium.WebBrowser.JSInvokeMode)">
+            <summary>
+            Creates a new javascript object to be added as a property 
+            to a browser frame's global object or a child object.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.Add(System.String,Chromium.WebBrowser.JSProperty)">
+            <summary>
+            Adds the specified javascript property to this object.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.ContainsKey(System.String)">
+            <summary>
+            Determines whether this javascript object contains a property with the specified name.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.JSObject.Keys">
+            <summary>
+            Gets a collection containing the property names in this javascript object.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.Remove(System.String)">
+            <summary>
+            Removes the property with the specified name from this javascript object.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.TryGetValue(System.String,Chromium.WebBrowser.JSProperty@)">
+            <summary>
+            Gets the property with the specified name.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.JSObject.Values">
+            <summary>
+            Gets a collection containing the properties in this javascript object.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.JSObject.Item(System.String)">
+            <summary>
+            Gets or sets the property with the specified name.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.Add(System.Collections.Generic.KeyValuePair{System.String,Chromium.WebBrowser.JSProperty})">
+            <summary>
+            Not supported.
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.Clear">
+            <summary>
+            Removes all properties from this javascript object.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.Contains(System.Collections.Generic.KeyValuePair{System.String,Chromium.WebBrowser.JSProperty})">
+            <summary>
+            Not supported.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.CopyTo(System.Collections.Generic.KeyValuePair{System.String,Chromium.WebBrowser.JSProperty}[],System.Int32)">
+            <summary>
+            Not supported.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.JSObject.Count">
+            <summary>
+            Gets the number of properties contained in this javascript object.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.JSObject.IsReadOnly">
+            <summary>
+            Always false.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.Remove(System.Collections.Generic.KeyValuePair{System.String,Chromium.WebBrowser.JSProperty})">
+            <summary>
+            Not supported.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the properties in this javascript object.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the properties in this javascript object.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.AddFunction(System.String)">
+            <summary>
+            Add a javascript function as a property to this object.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.AddFunction(System.String,Chromium.WebBrowser.JSInvokeMode)">
+            <summary>
+            Add a javascript function as a property to this object.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.AddObject(System.String)">
+            <summary>
+            Add another javascript object as a property to this object.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.AddObject(System.String,Chromium.WebBrowser.JSInvokeMode)">
+            <summary>
+            Add another javascript object as a property to this object.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.AddDynamicProperty(System.String)">
+            <summary>
+            Add a dynamic javascript property to this object.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.JSObject.AddDynamicProperty(System.String,Chromium.WebBrowser.JSInvokeMode)">
+            <summary>
+            Add a dynamic javascript property to this object.
+            </summary>
+        </member>
+        <member name="T:Chromium.WebBrowser.JSPropertyType">
+            <summary>
+            The type of a javascript property.
+            </summary>
+        </member>
+        <member name="T:Chromium.WebBrowser.JSInvokeMode">
+            <summary>
+            Modes for the JSProperty.InvokeMode property.
+            </summary>
+        </member>
+        <member name="F:Chromium.WebBrowser.JSInvokeMode.Inherit">
+            <summary>
+            Inherit from parent object. This is the default mode
+            for javascript properties.
+            </summary>
+        </member>
+        <member name="F:Chromium.WebBrowser.JSInvokeMode.Invoke">
+            <summary>
+            Callbacks from the render process are executed on the 
+            thread that owns the browser's underlying window handle
+            within the context of the calling remote thread.
+            This is the default mode for the webbrowser object.
+            </summary>
+        </member>
+        <member name="F:Chromium.WebBrowser.JSInvokeMode.DontInvoke">
+            <summary>
+            Callback from the render process are executed on the
+            worker thread which marshals the callback.
+            </summary>
+        </member>
+        <member name="T:Chromium.WebBrowser.JSProperty">
+            <summary>
+            Represents a javascript property in the render process to be added to 
+            a browser frame's global object or to a child object.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.JSProperty.PropertyType">
+            <summary>
+            The type of this property.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.JSProperty.InvokeMode">
+            <summary>
+            The invoke mode for this property. See also JSInvokeMode.
+            Changes to the invoke mode will be effective after the next
+            time the browser creates a V8 context for the target frame.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.JSProperty.WillInvoke">
+            <summary>
+            Indicates whether render process callbacks on this javascript
+            property will be executed on the thread that owns the 
+            browser's underlying window handle.
+            Depends on the invoke mode and, if invoke mode is inherit, 
+            also on the parent object's and/or browser's invoke mode.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.JSProperty.Name">
+            <summary>
+            The name of this property.
+            May be null if this property is still unbound.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.JSProperty.Browser">
+            <summary>
+            The browser this javascript property or the parent javascript object belongs to.
+            May be null if this property or it's parent is still unbound.
+            </summary>
+        </member>
+        <member name="P:Chromium.WebBrowser.JSProperty.Parent">
+            <summary>
+            The parent javascript object of this property.
+            May be null if this property is still unbound.
+            </summary>
+        </member>
+        <member name="T:Chromium.WebBrowser.WebResource">
+            <summary>
+            Custom web resource for registration with a
+            ChromiumWebBrowser control.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.WebResource.#ctor(System.Byte[],System.String)">
+            <summary>
+            Creates a WebResource for registration with a
+            ChromiumWebBrowser control.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.WebResource.#ctor(System.Drawing.Image)">
+            <summary>
+            Creates a WebResource from the given image
+            for registration with a ChromiumWebBrowser control.
+            The mime type will be image/png 
+            </summary>
+            <param name="image"></param>
+        </member>
+        <member name="M:Chromium.WebBrowser.WebResource.#ctor(System.Drawing.Image,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            Creates a WebResource from the given image
+            for registration with a ChromiumWebBrowser control.
+            The mime type will be set according to the image format.
+            </summary>
+        </member>
+        <member name="M:Chromium.WebBrowser.WebResource.#ctor(System.String)">
+            <summary>
+            Creates a WebResource from the given text
+            for registration with a ChromiumWebBrowser control.
+            The mime type will be text/html
+            </summary>
+            <param name="html"></param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,16 @@
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\x86\Debug\WindowsFormsApp1.exe.config
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\x86\Debug\WindowsFormsApp1.exe
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\x86\Debug\WindowsFormsApp1.pdb
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\x86\Debug\ChromiumFX.dll
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\x86\Debug\ChromiumWebBrowser.dll
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\x86\Debug\ChromiumFX.pdb
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\x86\Debug\ChromiumFX.xml
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\x86\Debug\ChromiumWebBrowser.pdb
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\x86\Debug\ChromiumWebBrowser.xml
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\x86\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\x86\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\x86\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\x86\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\x86\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\x86\Debug\WindowsFormsApp1.exe
+C:\Users\a1499\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\x86\Debug\WindowsFormsApp1.pdb
